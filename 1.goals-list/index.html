@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A First App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <label for="goal">Goal</label>
+        <!-- v-model attr value comes from Vue.createApp() "data" property -->
+        <input type="text" id="goal" v-model="enteredValue"/>
+        <button v-on:click="addGoal">Add Goal</button>
+      </div>
+      <ul>
+          <!-- {{}} - interpolation -->
+          <li v-for="goal in goals">{{goal}}</li>
+      </ul>
+    </div>
+    <!-- VUE.JS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

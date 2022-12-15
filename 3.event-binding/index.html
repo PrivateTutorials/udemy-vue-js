@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Vue Basics</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+<header>
+    <h1>Vue Events</h1>
+</header>
+<section id="events">
+    <h2>Events in Action</h2>
+    <!-- also possible to execute f() "v-on:click="incrementCounter()",
+    or to indicate it "v-on:click="incrementCounter"
+    with calling f() here, we override default "event", provided by browser. To pass it - "$event" as 1-st arg -->
+    <button v-on:click="incrementCounter(1)">Add</button>
+    <!-- 1. we can also run js code directly in html attr, but it's not performant
+     2. click.right - react only on right button click -->
+    <button v-on:click.right="counter = counter - 1">Reduce (R-Click)</button>
+    <p v-once>Starting counter: {{ counter }}</p>
+    <p>Result: {{ counter }}</p>
+
+    <!-- v-model - a shortcut for 2-way data binding to value an input:  v-bind:value="userName" v-on:input="setUserName" -->
+    <!-- <input type="text" v-bind:value="userName" v-on:input="setUserName" v-on:keyup.enter="confirmInputWithEnter">-->
+    <input type="text" v-model="userName" v-on:keyup.enter="confirmInputWithEnter">
+    <button v-on:click="resetUserNameInput">Reset Input</button>
+
+    <p>Your name: {{confirmedUserName}}</p>
+    <!--
+    not computed f() call, thus not performant
+    <p>Your full name: {{outputFullName()}}</p>
+     -->
+
+    <p>Your full name: {{fullName}}</p>
+    <p>Full name with Watched prop: {{userFullName}}</p>
+
+    <!--
+     Methods like this are not the best way to output data (in comparison to showing just variable values)
+     <p>Your full name: {{outputFullName()}}</p>
+     The reason - when Vue makes re-rendering for any other changed prop, it'll re-run any f() call
+     because it doesn't know if any f() is dependant on changed variable above
+     -->
+
+    <form v-on:submit.prevent="submitFormHandler">
+        <input type="text">
+        <button>Sign Up</button>
+    </form>
+</section>
+</body>
+</html>
