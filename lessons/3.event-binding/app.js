@@ -69,3 +69,8 @@ app.mount('#events');
 // watchers are good for:
 // - timers
 // http requests
+
+
+// shorthands
+// v-on:click => @click
+// v-bind:value => :value
