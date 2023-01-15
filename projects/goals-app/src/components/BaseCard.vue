@@ -3,6 +3,7 @@
         <!-- check if we have content for header slot in parent component -->
         <header v-if="$slots.header">
             <slot name="header">
+                <!-- slot fallback. will be displayed if in parent Comp we don't pass anything inside -->
                 <h2>Default Slot content</h2>
             </slot>
         </header>
