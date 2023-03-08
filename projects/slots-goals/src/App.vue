@@ -10,7 +10,8 @@
 
         <!-- <course-goals #default="slotProps"> - only allowed if we have only 1 slot in component -->
         <course-goals>
-            <!-- slotProps - Obj where all props of <slot> tag from child component are its keys -->
+            <!-- slotProps - passing props from child <slot> to Parent
+             slotProps - Obj where all props of <slot> tag from child component are its keys -->
             <template #default="slotProps">
                 <h2>{{slotProps.item}}</h2>
                 <p>{{slotProps['anotherProp']}}</p>
@@ -34,7 +35,7 @@
     </div>
 </template>
 
-<!-- scoped slots - passing "data" value UP:
+<!-- scoped slots - passing "originalObjectWithData" value UP:
 from child component with defined <slot> to parent where you have "markup" for slot -->
 
 <script>

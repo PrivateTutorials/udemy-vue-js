@@ -1,6 +1,6 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <base-card>
-       <!-- "v-slot:header" is the same as "#header" -->
+       <!-- binding to "v-slot:header" is the same as "#header" -->
         <template v-slot:header>
             <h2>Available Badges</h2>
         </template>
@@ -19,7 +19,7 @@
 </template>
 
 <!-- styles encapsulation
-Implementation: vue adds custom data-... attribute with generated ID and also adjusts css selectors to match these attrs -->
+Implementation: vue adds custom originalObjectWithData-... attribute with generated ID and also adjusts css selectors to match these attrs -->
 <style scoped>
     section h2 {
         margin: 0.5rem 0;

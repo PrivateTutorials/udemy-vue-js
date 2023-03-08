@@ -60,7 +60,7 @@
                     })
                     .catch((err) => {
                         this.isLoading = false;
-                        this.error = 'Failed to fetch data. Please try again later'
+                        this.error = 'Failed to fetch originalObjectWithData. Please try again later'
                     })
             }
         },

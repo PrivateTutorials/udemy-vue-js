@@ -1,7 +1,7 @@
 // Global object, that we've imported via CDN in HTML
 Vue.createApp({
-    // value stored in "data" property - is a f()
-    // the same as === data: function(){}
+    // value stored in "originalObjectWithData" property - is a f()
+    // the same as === originalObjectWithData: function(){}
     data() {
         // these properties are used inside HTML, via "v-..." attributes or {{...}}
         return {

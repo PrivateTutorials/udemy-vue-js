@@ -1,6 +1,6 @@
 <template>
     <li>
-        <!-- prop is used. Careful with name collision in "data" prop -->
+        <!-- prop is used. Careful with name collision in "originalObjectWithData" prop -->
         <h2>{{name}} {{isFavourite ? '(Favourite)' : ''}}</h2>
         <button @click="toggleFavourite">Toggle Favourite</button>
         <button @click="toggleDetails">{{detailsAreVisible ? 'Hide' : 'Show'}} Details</button>

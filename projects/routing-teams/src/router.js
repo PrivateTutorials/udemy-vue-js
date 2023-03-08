@@ -74,7 +74,7 @@ router.beforeEach((to, from, next) => {
     // programmatic navigation
     //  next({name: 'team-members', params: {teamId: 't2'}});
 
-    // getting data from meta prop
+    // getting originalObjectWithData from meta prop
     if (to.meta.needsAuth) {
         console.log('Auth is needed');
         next();

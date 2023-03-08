@@ -49,7 +49,7 @@
                 this.loadTeamMembers(newRouteValue);
             }
         },
-        // data received, but not yet rendered
+        // originalObjectWithData received, but not yet rendered
         created() {
             this.loadTeamMembers(this.$route);
             // access query params:

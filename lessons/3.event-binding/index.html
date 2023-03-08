@@ -28,7 +28,7 @@
     <p v-once>Starting counter: {{ counter }}</p>
     <p>Result: {{ counter }}</p>
 
-    <!-- v-model - a shortcut for 2-way data binding to value an input:  v-bind:value="userName" v-on:input="setUserName" -->
+    <!-- v-model - a shortcut for 2-way originalObjectWithData binding to value an input:  v-bind:value="userName" v-on:input="setUserName" -->
     <!-- <input type="text" v-bind:value="userName" v-on:input="setUserName" v-on:keyup.enter="confirmInputWithEnter">-->
     <input type="text" v-model="userName" v-on:keyup.enter="confirmInputWithEnter">
     <button v-on:click="resetUserNameInput">Reset Input</button>
@@ -43,7 +43,7 @@
     <p>Full name with Watched prop: {{userFullName}}</p>
 
     <!--
-     Methods like this are not the best way to output data (in comparison to showing just variable values)
+     Methods like this are not the best way to output originalObjectWithData (in comparison to showing just variable values)
      <p>Your full name: {{outputFullName()}}</p>
      The reason - when Vue makes re-rendering for any other changed prop, it'll re-run any f() call
      because it doesn't know if any f() is dependant on changed variable above

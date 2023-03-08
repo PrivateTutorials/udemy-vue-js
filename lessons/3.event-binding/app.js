@@ -7,8 +7,8 @@ const app = Vue.createApp({
             userFullName: ''
         };
     },
-    // f()s inside have the same name as in "data" or "computed" props
-    // when "data" prop changes, then watcher f() with the same name - is being run
+    // f()s inside have the same name as in "originalObjectWithData" or "computed" props
+    // when "originalObjectWithData" prop changes, then watcher f() with the same name - is being run
     watch: {
         userName(newVal, oldVa,) {
             // newVal - the latest value of the watched prop
@@ -64,7 +64,7 @@ const app = Vue.createApp({
 app.mount('#events');
 
 // events are not binded to computed props, only to regular methods
-// computed props - only for outputting data
+// computed props - only for outputting originalObjectWithData
 
 // watchers are good for:
 // - timers

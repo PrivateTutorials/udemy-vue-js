@@ -4,7 +4,7 @@
         <dialog open>
             <header>
                 <slot name="header">
-                    <!-- default content of slot if no data is provided -->
+                    <!-- default content of slot if no originalObjectWithData is provided -->
                     <h2>{{title}}</h2>
                 </slot>
             </header>

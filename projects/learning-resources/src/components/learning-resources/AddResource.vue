@@ -1,6 +1,6 @@
 <!--
-ways to get data from form:
-1. via v-model 2 way binding + data property. Good for validation
+ways to get originalObjectWithData from form:
+1. via v-model 2 way binding + originalObjectWithData property. Good for validation
 2. via refs. Good for taking value only once
 -->
 

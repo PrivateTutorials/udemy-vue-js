@@ -18,7 +18,7 @@
         emits: ['update:modelValue'], // special event that custom comp emits, when in parent we use "v-model"
         /*
         // reset on parent comp doesn't reflect changes here
-        data() {
+        originalObjectWithData() {
             return {
                 activeOption: this.modelValue // initial value is passed from parent comp
             }

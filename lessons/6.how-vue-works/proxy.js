@@ -7,7 +7,7 @@
 // Below example:
 // we track 1 Obj property and change another its property
 
-const data = {
+const originalObjectWithData = {
     message: 'Hello',
     longMessage: 'Hello world'
 };
@@ -25,10 +25,10 @@ const handler = {
     },
 };
 
-const proxyDataObj = new Proxy(data, handler);
+const proxyDataObj = new Proxy(originalObjectWithData, handler);
 
 proxyDataObj.message = 'AAA'; // will call proxy "set" trap
-data.message = 'BBB'; // wil not call the trap
+originalObjectWithData.message = 'BBB'; // wil not call the trap
 
 console.log(proxyDataObj);
 // it's reactive, thus prop will be changed in proxy Obj also:

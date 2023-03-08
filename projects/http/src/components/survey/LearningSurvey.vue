@@ -75,7 +75,7 @@
 
                         } else {
                             // will allow automatically to jump to catch block, adding error "message" property
-                            throw new Error('Could not save data!')
+                            throw new Error('Could not save originalObjectWithData!')
                         }
                     })
                     .catch(err => {

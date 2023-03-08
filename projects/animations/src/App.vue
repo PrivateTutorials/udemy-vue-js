@@ -1,5 +1,24 @@
 <template>
     <div>
+
+        <!-- ANIMATION OF PAGES NAVIGATION -->
+
+        <!-- According to tutorial-->
+        <!-- v-slot="slotProps" - getting from router-vuw component -->
+        <!--<router-view v-slot="slotProps">
+            <transition name="route"></transition>
+            <component :is="slotProps.Component"></component>
+        </router-view>-->
+
+        <!-- What works for me -->
+        <transition name="route" mode="out-in">
+            <router-view>
+            </router-view>
+        </transition>
+
+        <div class="container">
+            <UsersList/>
+        </div>
         <div class="container">
             <div class="block" :class="{animateBox : animatedBlock}"></div>
             <button @click="animateBLock">Animate</button>
@@ -10,7 +29,19 @@
              .v-leave-from, v-leave-active, v-leave-to classes applied automatically
               name="..." -adds prefix to these classes
               not prefix, but whole class rename: "enter-to(active/from)-class="..." -->
-            <transition name="paragraph">
+            <transition name="paragraph"
+                        @before-enter="beforeTransEnter"
+                        @enter="likeActiveMethod"
+                        @after-enter="afterTransEnter"
+                        @before-leave="beforeTransLeave"
+                        @enter-cancelled="enterCancelled"
+                        @leave-cancelled="leaveCancelled"
+            >
+                <!-- enter/leave-cancelled - when 1 animation starts, not waiting fot another to anim to finish -->
+                <!--
+                to disable css transition and use JS ones:
+                <transition :css="false" >...</transition>
+                -->
                 <p v-if="paragraphIsVisible">Sometimes visible</p>
             </transition>
             <button @click="toggleParagraph">Toggle Paragraph</button>
@@ -33,8 +64,19 @@
     </div>
 </template>
 
+<!--
+React on animations ->
+run JS code on transition stages - transition events:
+<transition @before-enter="methodName">
+-->
+
 <script>
+    import UsersList from './components/UsersList.vue';
+
     export default {
+        components: {
+            UsersList
+        },
         data() {
             return {
                 dialogIsVisible: false,
@@ -61,6 +103,24 @@
             },
             hideUsers() {
                 this.usersAreVisible = false;
+            },
+            beforeTransEnter(htmlElem) {
+                // htmlElem.style.opacity = 0;
+            },
+            // done - to tell vue when to run next events in the lifecycle, if we have timeouts/intervals.
+            // With css - time is calculated automatically, but with JS - not
+            likeActiveMethod(elem, done) {
+            },
+            afterTransEnter(htmlElem) {
+            },
+            // leave - when elem is being removed from DOM (leave = leaving DOM)
+            beforeTransLeave(htmlElem) {
+                console.log("Before Leave");
+            },
+            enterCancelled() {
+                // if, for example, hide paragraph was clicked, but its appearing animation hasn't finished yet
+            },
+            leaveCancelled() {
             }
         },
     };
@@ -105,7 +165,7 @@
     }
 
     .paragraph-enter-active, .paragraph-leave-active {
-        transition: all 0.3s ease-out;
+        transition: all 0.7s ease-out;
 
         /*
         If yoy have more complex behavior than "transition", - use animation.
@@ -118,6 +178,8 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+    /* CHANGING BUTTONS */
 
     .users-fade-button-enter-from, .users-fade-button-leave-to {
         opacity: 0;
@@ -133,6 +195,21 @@
 
     .users-fade-button-enter-to, .users-fade-button-leave-from {
         opacity: 1;
+    }
+
+    /* PAGES NAV ANIMATION */
+    .route-enter-from {
+    }
+
+    .route-enter-active {
+        animation: slide-box 0.4s ease-out;
+    }
+
+    .route-enter-to {
+    }
+
+    .route-leave-active {
+        animation: slide-box 0.4s ease-in;
     }
 
     button {
